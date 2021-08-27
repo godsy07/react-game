@@ -2,9 +2,19 @@ import React, { forwardRef } from "react";
 
 import "./play-area-container.styles.css";
 
-const PlayAreaContainer = ({ blockWidth, leftPosition, topPosition }, ref) => {
+const PlayAreaContainer = (
+  { playAreaWidth, blockWidth, leftPosition, topPosition },
+  ref
+) => {
   return (
-    <div className='play-area' style={{ position: "relative" }}>
+    <div
+      className='play-area'
+      style={{
+        position: "relative",
+        height: `${playAreaWidth}px`,
+        width: `${playAreaWidth}px`,
+      }}
+    >
       <div
         ref={ref}
         // style={{ position: "absolute", top: "10px", right: "10px" }}

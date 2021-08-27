@@ -5,7 +5,8 @@ import PlayAreaContainer from "./play-area/PlayAreaContainer";
 
 const App = () => {
   const refBlock = useRef(null);
-  const blockWidth = 32; // for initial width of block
+  const playAreaWidth = 512; // for setting up height and width of PlayAreaContainer dynamically
+  const blockWidth = 32; // for initial width of block (must be a factor of playAreaWidth value)
   const [leftPosition, setLeftPosition] = useState(0); // left position in absolute
   const [topPosition, setTopPosition] = useState(0); // top position in absolute
   const handleClick = (direction, e) => {
@@ -24,13 +25,13 @@ const App = () => {
         break;
       case "right":
         // console.log("Right direction");
-        if (leftPosition !== 512 - blockWidth && leftPosition < 512) {
+        if (leftPosition !== playAreaWidth - blockWidth && leftPosition < 512) {
           setLeftPosition(leftPosition + blockWidth);
         }
         break;
       case "down":
         // console.log("Down direction");
-        if (topPosition !== 512 - blockWidth && topPosition < 512) {
+        if (topPosition !== playAreaWidth - blockWidth && topPosition < 512) {
           setTopPosition(topPosition + blockWidth);
         }
         break;
@@ -43,6 +44,7 @@ const App = () => {
   return (
     <div className='App'>
       <PlayAreaContainer
+        playAreaWidth={playAreaWidth}
         blockWidth={blockWidth}
         leftPosition={leftPosition}
         topPosition={topPosition}
