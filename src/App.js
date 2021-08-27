@@ -24,13 +24,13 @@ const App = () => {
         break;
       case "right":
         // console.log("Right direction");
-        if (leftPosition < 512) {
+        if (leftPosition !== 512 - blockWidth && leftPosition < 512) {
           setLeftPosition(leftPosition + blockWidth);
         }
         break;
       case "down":
         // console.log("Down direction");
-        if (topPosition < 512) {
+        if (topPosition !== 512 - blockWidth && topPosition < 512) {
           setTopPosition(topPosition + blockWidth);
         }
         break;

@@ -6,7 +6,7 @@
   height: 512px;
   width: 512px;
 
-  background-color: rgb(10, 10, 10, 0.7);
+  background-color: rgba(70, 70, 70, 0.7);
   border: 5px solid rgb(200, 0, 200);
   /* border-style: double; */
   /* border-style: dotted; */
