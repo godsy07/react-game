@@ -6,18 +6,18 @@ const ControlContainer = ({ handleClick }) => {
   return (
     <div className='control-container'>
       <div className='up' onClick={(e) => handleClick("up", e)}>
-        up
+        &#129153;
       </div>
       <div className='side-controls'>
         <div className='left' onClick={(e) => handleClick("left", e)}>
-          left
+          &#129152;
         </div>
         <div className='right' onClick={(e) => handleClick("right", e)}>
-          right
+          &#129154;
         </div>
       </div>
       <div className='down' onClick={(e) => handleClick("down", e)}>
-        down
+        &#129155;
       </div>
     </div>
   );

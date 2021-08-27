@@ -1,5 +1,5 @@
 .control-container {
-  width: 280px;
+  /* width: 200px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,12 +12,25 @@
 }
 
 .side-controls div {
-  margin: 10px;
+  margin: 5px;
 }
 
 .up,
 .left,
 .right,
 .down {
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px #000;
+  background-color: rgb(200, 200, 200);
   cursor: pointer;
+}
+.up:hover,
+.left:hover,
+.right:hover,
+.down:hover {
+  background-color: rgb(250, 225, 250);
+  transform: scale(115%);
+  transition: all 0.2s ease-in-out;
 }

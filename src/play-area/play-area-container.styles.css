@@ -6,7 +6,11 @@
   height: 512px;
   width: 512px;
 
-  background-color: rgb(100, 100, 100, 0.8);
+  background-color: rgb(10, 10, 10, 0.7);
+  border: 5px solid rgb(200, 0, 200);
+  /* border-style: double; */
+  /* border-style: dotted; */
+  border-style: dashed;
 }
 /* 
 .play-area div:nth-child(even) {
