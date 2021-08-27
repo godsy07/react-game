@@ -1,0 +1,7 @@
+.play-area-block {
+  display: absolute;
+  background-color: #fff;
+
+  height: 32px;
+  width: 32px;
+}

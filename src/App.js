@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useState } from "react";
+import "./App.css";
+import ControlContainer from "./control-container/ControlContainer";
+import PlayAreaContainer from "./play-area/PlayAreaContainer";
 
-function App() {
+const App = () => {
+  const refBlock = useRef(null);
+  const blockWidth = 32; // for initial width of block
+  const [leftPosition, setLeftPosition] = useState(0); // left position in absolute
+  const [topPosition, setTopPosition] = useState(0); // top position in absolute
+  const handleClick = (direction, e) => {
+    switch (direction) {
+      case "up":
+        // console.log("Up direction");
+        if (topPosition !== 0) {
+          setTopPosition(topPosition - blockWidth);
+        }
+        break;
+      case "left":
+        // console.log("Left direction");
+        if (leftPosition !== 0) {
+          setLeftPosition(leftPosition - blockWidth);
+        }
+        break;
+      case "right":
+        // console.log("Right direction");
+        if (leftPosition < 512) {
+          setLeftPosition(leftPosition + blockWidth);
+        }
+        break;
+      case "down":
+        // console.log("Down direction");
+        if (topPosition < 512) {
+          setTopPosition(topPosition + blockWidth);
+        }
+        break;
+
+      default:
+        console.log("Invalid");
+        break;
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <PlayAreaContainer
+        blockWidth={blockWidth}
+        leftPosition={leftPosition}
+        topPosition={topPosition}
+        ref={refBlock}
+      />
+      <ControlContainer handleClick={handleClick} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,23 @@
+.control-container {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-controls {
+  display: flex;
+  align-items: center;
+}
+
+.side-controls div {
+  margin: 10px;
+}
+
+.up,
+.left,
+.right,
+.down {
+  cursor: pointer;
+}
