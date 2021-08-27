@@ -14,6 +14,7 @@ const PlayAreaContainer = ({ blockWidth, leftPosition, topPosition }, ref) => {
           top: `${topPosition}px`,
           height: `${blockWidth}px`,
           width: `${blockWidth}px`,
+          transition: "all 0.2s ease-in",
         }}
         className='play-area-block'
       ></div>
