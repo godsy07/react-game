@@ -6,9 +6,10 @@ import PlayAreaContainer from "./play-area/PlayAreaContainer";
 const App = () => {
   const refBlock = useRef(null);
   const playAreaWidth = 512; // for setting up height and width of PlayAreaContainer dynamically
-  const blockWidth = 32; // for initial width of block (must be a factor of playAreaWidth value)
-  const [leftPosition, setLeftPosition] = useState(0); // left position in absolute
-  const [topPosition, setTopPosition] = useState(0); // top position in absolute
+  const blockWidth = 16; // for initial width of block (must be a factor of playAreaWidth value)
+  const blockHeight = 16; // for initial height of block (must be a factor of playAreaWidth value)
+  const [leftPosition, setLeftPosition] = useState(80); // left position in absolute
+  const [topPosition, setTopPosition] = useState(160); // top position in absolute
   const handleClick = (direction, e) => {
     switch (direction) {
       case "up":
@@ -46,6 +47,7 @@ const App = () => {
       <PlayAreaContainer
         playAreaWidth={playAreaWidth}
         blockWidth={blockWidth}
+        blockHeight={blockHeight}
         leftPosition={leftPosition}
         topPosition={topPosition}
         ref={refBlock}

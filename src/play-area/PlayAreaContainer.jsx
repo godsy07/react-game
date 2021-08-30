@@ -1,11 +1,9 @@
 import React, { forwardRef } from "react";
+import PlayAreaBlocks from "../play-area-blocks/PlayAreaBlocks";
 
 import "./play-area-container.styles.css";
 
-const PlayAreaContainer = (
-  { playAreaWidth, blockWidth, leftPosition, topPosition },
-  ref
-) => {
+const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
   return (
     <div
       className='play-area'
@@ -15,19 +13,7 @@ const PlayAreaContainer = (
         width: `${playAreaWidth}px`,
       }}
     >
-      <div
-        ref={ref}
-        // style={{ position: "absolute", top: "10px", right: "10px" }}
-        style={{
-          position: "absolute",
-          left: `${leftPosition}px`,
-          top: `${topPosition}px`,
-          height: `${blockWidth}px`,
-          width: `${blockWidth}px`,
-          transition: "all 0.2s ease-in",
-        }}
-        className='play-area-block'
-      ></div>
+      <PlayAreaBlocks {...otherProps} />
     </div>
   );
 };
