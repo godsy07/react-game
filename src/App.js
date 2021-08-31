@@ -80,9 +80,12 @@ const App = () => {
   useEffect(() => {
     if (gameStatus === true) {
       document.onkeydown = keyPressEvent;
-      setInterval(moveSnake, snakeSpeed);
+      const run = setInterval(() => {
+        moveSnake();
+      }, snakeSpeed);
+      return () => clearInterval(run);
     }
-  }, [gameStatus]);
+  });
 
   return (
     <div className='App'>
