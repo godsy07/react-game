@@ -1,25 +1,30 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import "./play-area-blocks.styles.css";
 
-const PlayAreaBlocks = (
-  { blockPosition, blockHeight, blockWidth, snakeDirection },
-  ref
-) => {
+const PlayAreaBlocks = ({ blockPosition, blockWidth, snakeDots }, ref) => {
   return (
-    <div
-      ref={ref}
-      // style={{ position: "absolute", top: "10px", right: "10px" }}
-      style={{
-        position: "absolute",
-        left: `${blockPosition[0]}px`,
-        top: `${blockPosition[1]}px`,
-        height: `${blockHeight}px`,
-        width: `${blockWidth}px`,
-        transition: "all 0.2s ease-in",
-      }}
-      className='play-area-block'
-    ></div>
+    <div>
+      {snakeDots.map((dot, i) => {
+        const style = {
+          left: `${dot[0]}%`,
+          top: `${dot[1]}%`,
+        };
+        // console.log(dot);
+        return <div key={i} style={style} className='play-area-block'></div>;
+      })}
+      {/* <div
+        style={{
+          left: "2%",
+          top: 0,
+          // left: `${blockPosition[0]}px`,
+          // top: `${blockPosition[1]}px`,
+          // height: `${blockWidth}px`,
+          // width: `${blockWidth}px`,
+        }}
+        className='play-area-block'
+      ></div> */}
+    </div>
   );
 };
 
-export default forwardRef(PlayAreaBlocks);
+export default PlayAreaBlocks;

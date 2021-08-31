@@ -1,9 +1,9 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import PlayAreaBlocks from "../play-area-blocks/PlayAreaBlocks";
 
 import "./play-area-container.styles.css";
 
-const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
+const PlayAreaContainer = ({ playAreaWidth, ...otherProps }) => {
   return (
     <div
       className='play-area'
@@ -13,9 +13,9 @@ const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
         width: `${playAreaWidth}px`,
       }}
     >
-      <PlayAreaBlocks ref={ref} {...otherProps} />
+      <PlayAreaBlocks {...otherProps} />
     </div>
   );
 };
 
-export default forwardRef(PlayAreaContainer);
+export default PlayAreaContainer;

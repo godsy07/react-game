@@ -8,24 +8,15 @@ body {
 
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   min-height: 100vh;
   width: 100vw;
-  box-sizing: border-box;
+  overflow-x: hidden;
   background: linear-gradient(
     to left top,
-    /* rgb(130, 67, 248), */ rgb(4, 135, 158),
+    rgb(4, 135, 158),
     rgb(3, 187, 110),
     rgb(3, 187, 95)
   );
-  /* background: linear-gradient(
-   to left top,
-    rgb(130, 67, 248),
-    rgb(1, 181, 212),
-    rgb(2, 252, 148),
-    rgb(3, 187, 95)
-  ); */
-  /* background: linear-gradient(rgb(68, 180, 68), rgb(34, 164, 173)); */
 }
 
 code {
