@@ -13,7 +13,7 @@ const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
         width: `${playAreaWidth}px`,
       }}
     >
-      <PlayAreaBlocks {...otherProps} />
+      <PlayAreaBlocks ref={ref} {...otherProps} />
     </div>
   );
 };
