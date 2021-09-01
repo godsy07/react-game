@@ -2,9 +2,17 @@ import React from "react";
 
 import "./control-container.styles.css";
 
-const ControlContainer = ({ handleClick, gameStatus }) => {
+const ControlContainer = ({ handleClick, gameStatus, score }) => {
   return (
     <div className='control-container'>
+      <div className='score-board'>
+        <div className='score-text'>
+          <div>Score</div>
+          <div>:</div>
+          <div>{score}</div>
+        </div>
+        {score && <div className='message-area'>test message</div>}
+      </div>
       <div className='up' onClick={(e) => handleClick("up")}>
         &#129153;
       </div>
@@ -19,14 +27,22 @@ const ControlContainer = ({ handleClick, gameStatus }) => {
       <div className='down' onClick={(e) => handleClick("down")}>
         &#129155;
       </div>
-      <button
-        className={`${
-          gameStatus ? "stop-button" : "start-button"
-        } custom-button`}
-        onClick={(e) => handleClick("start")}
-      >
-        {gameStatus ? "Stop Game" : "Start Game"}
-      </button>
+      <div className='buttons-group'>
+        <button
+          className={`${
+            gameStatus ? "stop-button" : "start-button"
+          } custom-button`}
+          onClick={(e) => handleClick("start")}
+        >
+          {gameStatus ? "PAUSE" : "START"}
+        </button>
+        <button
+          className='custom-button reset-button'
+          onClick={(e) => handleClick("reset")}
+        >
+          RESET
+        </button>
+      </div>
     </div>
   );
 };

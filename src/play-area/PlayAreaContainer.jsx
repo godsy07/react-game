@@ -3,7 +3,7 @@ import PlayAreaBlocks from "../play-area-blocks/PlayAreaBlocks";
 
 import "./play-area-container.styles.css";
 
-const PlayAreaContainer = ({ playAreaWidth, ...otherProps }) => {
+const PlayAreaContainer = ({ playAreaWidth, snakeDots }) => {
   return (
     <div
       className='play-area'
@@ -13,7 +13,7 @@ const PlayAreaContainer = ({ playAreaWidth, ...otherProps }) => {
         width: `${playAreaWidth}px`,
       }}
     >
-      <PlayAreaBlocks {...otherProps} />
+      <PlayAreaBlocks snakeDots={snakeDots} />
     </div>
   );
 };
