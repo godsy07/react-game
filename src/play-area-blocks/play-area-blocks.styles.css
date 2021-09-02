@@ -1,3 +1,6 @@
+.snake {
+  z-index: 5;
+}
 .play-area-block {
   position: absolute;
   background-color: #fff;

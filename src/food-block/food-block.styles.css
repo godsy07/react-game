@@ -1,0 +1,6 @@
+.food-block {
+  position: absolute;
+  height: 2%;
+  width: 2%;
+  background-color: red;
+}

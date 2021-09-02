@@ -3,15 +3,25 @@ import "./App.css";
 import ControlContainer from "./control-container/ControlContainer";
 import PlayAreaContainer from "./play-area/PlayAreaContainer";
 
+const initialPosition = [
+  [10, 10],
+  [12, 10],
+];
+
+const getRandomCoordinates = () => {
+  const x = Math.floor(Math.random() * (100 / 2)) * 2;
+  const y = Math.floor(Math.random() * (100 / 2)) * 2;
+  return { top: y, left: x };
+};
+
 const App = () => {
   const [gameStatus, setGameStatus] = useState(false);
+  const [collapseStatus, setCollapseStatus] = useState(false);
   const [snakeDirection, setSnakeDirection] = useState("right");
   const [snakeSpeed, setSnakeSpeed] = useState(200);
-  const [score, setScore] = useState(10);
-  const [snakeDots, setSnakeDots] = useState([
-    [0, 0],
-    [2, 0],
-  ]); // position of snake in absolute in percentage (%)
+  const [score, setScore] = useState(0);
+  const [food, setFood] = useState(getRandomCoordinates);
+  const [snakeDots, setSnakeDots] = useState(initialPosition); // position of snake in absolute in percentage (%)
   const playAreaWidth = 512; // for setting up height and width of PlayAreaContainer dynamically
   // const blockWidth = 8; // for initial width of block (must be a factor of playAreaWidth value)
   // const [blockPosition, setBlockPosition] = useState([80, 160]); // position of block in absolute
@@ -21,11 +31,12 @@ const App = () => {
       setGameStatus(!gameStatus);
     }
     if (direction === "reset") {
+      setFood(getRandomCoordinates);
       setGameStatus(false);
-      setSnakeDots([
-        [0, 0],
-        [2, 0],
-      ]);
+      setCollapseStatus(false);
+      setSnakeDirection("right");
+      setScore(10);
+      setSnakeDots(initialPosition);
     }
     if (gameStatus === true) {
       if (direction === "up") {
@@ -91,19 +102,49 @@ const App = () => {
         console.log("invalid response");
         break;
     }
-    dots.push(head);
-    dots.shift();
+    checkEat();
+    dots.push(head); // Adds new element at array end in snakeDots
+    dots.shift(); // Removes first element in array snakeDots
     setSnakeDots(dots);
   };
 
   const checkOutOfBoundary = (a, b) => {
     if (a >= 100 || b >= 100 || a < 0 || b < 0) {
+      setCollapseStatus(true);
       setGameStatus(false);
       return true;
     }
   };
 
+  const checkEat = () => {
+    let head = snakeDots[snakeDots.length - 1];
+    let tempFood = food; // tempFood is object while head is array
+    if (head[0] === tempFood.left && head[1] === tempFood.top) {
+      setFood(getRandomCoordinates);
+      enlargeSnake();
+      increaseSnakeSpeed();
+      setScore(score + 4);
+    }
+  };
+
+  const enlargeSnake = () => {
+    let newSnake = [...snakeDots];
+    newSnake.unshift([]);
+    setSnakeDots(newSnake);
+  };
+
+  const increaseSnakeSpeed = () => {
+    if (snakeSpeed > 8) {
+      setSnakeSpeed(snakeSpeed - 8);
+    }
+  };
+
   useEffect(() => {
+    document.onkeydown = (e) => {
+      if (e.code === "Space") {
+        setGameStatus(true);
+      }
+    };
     if (gameStatus === true) {
       document.onkeydown = keyPressEvent;
       const run = setInterval(() => {
@@ -112,13 +153,17 @@ const App = () => {
       return () => clearInterval(run);
     }
   });
-
   return (
     <div className='App'>
-      <PlayAreaContainer playAreaWidth={playAreaWidth} snakeDots={snakeDots} />
+      <PlayAreaContainer
+        playAreaWidth={playAreaWidth}
+        snakeDots={snakeDots}
+        food={food}
+      />
       <ControlContainer
         gameStatus={gameStatus}
         score={score}
+        collapseStatus={collapseStatus}
         handleClick={handleClick}
       />
     </div>

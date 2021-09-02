@@ -3,7 +3,7 @@ import "./play-area-blocks.styles.css";
 
 const PlayAreaBlocks = ({ snakeDots }, ref) => {
   return (
-    <div>
+    <div className='snake'>
       {snakeDots.map((dot, i) => {
         const style = {
           left: `${dot[0]}%`,

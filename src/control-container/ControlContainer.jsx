@@ -2,7 +2,12 @@ import React from "react";
 
 import "./control-container.styles.css";
 
-const ControlContainer = ({ handleClick, gameStatus, score }) => {
+const ControlContainer = ({
+  handleClick,
+  gameStatus,
+  score,
+  collapseStatus,
+}) => {
   return (
     <div className='control-container'>
       <div className='score-board'>
@@ -11,7 +16,24 @@ const ControlContainer = ({ handleClick, gameStatus, score }) => {
           <div>:</div>
           <div>{score}</div>
         </div>
-        {score && <div className='message-area'>test message</div>}
+        {collapseStatus ? (
+          <div className='message-area'>
+            Game Over...!!!
+            <br />
+            You scored <b>{score}</b> points.
+          </div>
+        ) : (
+          !gameStatus && (
+            <div className='message-area'>
+              Press <span className='highlight-text'>SPACE BAR</span>{" "}
+              <i>
+                <strong>or</strong>
+              </i>
+              <br /> Click at <span className='highlight-text'>START</span> to
+              start the game.
+            </div>
+          )
+        )}
       </div>
       <div className='up' onClick={(e) => handleClick("up")}>
         &#129153;
