@@ -1,9 +1,10 @@
-import React, { forwardRef } from "react";
+import React from "react";
+import FoodBlock from "../food-block/FoodBlock";
 import PlayAreaBlocks from "../play-area-blocks/PlayAreaBlocks";
 
 import "./play-area-container.styles.css";
 
-const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
+const PlayAreaContainer = ({ playAreaWidth, snakeDots, food }) => {
   return (
     <div
       className='play-area'
@@ -13,9 +14,10 @@ const PlayAreaContainer = ({ playAreaWidth, ...otherProps }, ref) => {
         width: `${playAreaWidth}px`,
       }}
     >
-      <PlayAreaBlocks {...otherProps} />
+      <PlayAreaBlocks snakeDots={snakeDots} />
+      {food !== null && <FoodBlock food={food} />}
     </div>
   );
 };
 
-export default forwardRef(PlayAreaContainer);
+export default PlayAreaContainer;
