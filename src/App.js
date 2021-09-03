@@ -107,8 +107,8 @@ const App = () => {
   };
 
   const increaseSnakeSpeed = () => {
-    if (snakeSpeed > 8) {
-      setSnakeSpeed(snakeSpeed - 8);
+    if (snakeSpeed > 3) {
+      setSnakeSpeed(snakeSpeed - 3);
     }
   };
 
