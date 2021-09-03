@@ -2,5 +2,31 @@
   position: absolute;
   height: 2%;
   width: 2%;
-  background-color: red;
+  background-color: rgb(248, 37, 37);
+  border-radius: 50%;
+  /* border: 1px solid #000; */
+  animation: blink 0.5s ease-in infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    background-color: red;
+    opacity: 100;
+  }
+  30% {
+    background-color: rgb(255, 174, 0);
+    opacity: 100;
+  }
+  50% {
+    background-color: rgb(238, 224, 30);
+    opacity: 0;
+  }
+  70% {
+    background-color: rgb(255, 136, 0);
+    opacity: 100;
+  }
+  100% {
+    background-color: rgb(255, 0, 0);
+    opacity: 100;
+  }
 }

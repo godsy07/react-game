@@ -3,12 +3,11 @@
   display: flex;
   margin: 20px;
 
-  /* background-color: rgb(255, 255, 255, 0.2); */
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 5px solid rgb(200, 0, 200);
-  /* border-style: double; */
-  /* border-style: dotted; */
-  /* border-style: dashed; */
+  background-color: rgba(63, 61, 61, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  /* border: 5px solid rgb(126, 3, 99); */
+  border: 8px solid rgb(0, 0, 0);
+  border-style: double;
 
   /* box-shadow: 1px 1px 20px #000; */
 }
