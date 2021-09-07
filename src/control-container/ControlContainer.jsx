@@ -22,17 +22,24 @@ const ControlContainer = ({
             <br />
             You scored <b>{score}</b> points.
           </div>
+        ) : !gameStatus ? (
+          <div className='message-area'>
+            Press <span className='highlight-text'>SPACE BAR</span>{" "}
+            <i>
+              <strong>or</strong>
+            </i>
+            <br /> Click at <span className='highlight-text'>START</span> to
+            start the game.
+          </div>
         ) : (
-          !gameStatus && (
-            <div className='message-area'>
-              Press <span className='highlight-text'>SPACE BAR</span>{" "}
-              <i>
-                <strong>or</strong>
-              </i>
-              <br /> Click at <span className='highlight-text'>START</span> to
-              start the game.
-            </div>
-          )
+          <div className='mesage-area'>
+            <p>
+              Press <span className='highlight-text'>SPACE BAR</span> to{" "}
+              <em>
+                <strong>PAUSE</strong>
+              </em>
+            </p>
+          </div>
         )}
       </div>
       <div className='up' onClick={(e) => handleClick("up")}>
