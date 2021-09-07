@@ -59,9 +59,13 @@ const ControlContainer = ({
       <div className='buttons-group'>
         <button
           className={`${
-            gameStatus ? "stop-button" : "start-button"
+            !collapseStatus && (gameStatus ? "stop-button" : "start-button")
           } custom-button`}
-          onClick={(e) => handleClick("start")}
+          onClick={(e) => {
+            if (!collapseStatus) {
+              handleClick("start");
+            }
+          }}
         >
           {gameStatus ? "PAUSE" : "START"}
         </button>
