@@ -18,7 +18,7 @@ const App = () => {
   const [gameStatus, setGameStatus] = useState(false);
   const [collapseStatus, setCollapseStatus] = useState(false);
   const [snakeDirection, setSnakeDirection] = useState("right");
-  const [snakeSpeed, setSnakeSpeed] = useState(300);
+  const [snakeSpeed, setSnakeSpeed] = useState(200);
   const [score, setScore] = useState(0);
   const [food, setFood] = useState(getRandomCoordinates);
   const [lastLocation, setLastLocation] = useState(null);
@@ -106,10 +106,10 @@ const App = () => {
       if (head[0] === dots[i][0] && head[1] === dots[i][1]) {
         setCollapseStatus(true);
         setGameStatus(false);
-        // return true;
+        return true;
       }
     }
-    // return false;
+    return false;
   };
 
   const checkEat = () => {
@@ -179,8 +179,12 @@ const App = () => {
     });
     if (gameStatus === true) {
       document.onkeydown = keyPressEvent;
-      checkCollapsed();
       const run = setInterval(() => {
+        let check = null;
+        if ((check = checkCollapsed())) {
+          console.log(check);
+          return clearInterval(run);
+        }
         moveSnake();
       }, snakeSpeed);
       return () => clearInterval(run);
