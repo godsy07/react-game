@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import ControlContainer from "./control-container/ControlContainer";
-import PlayAreaContainer from "./play-area/PlayAreaContainer";
-
-const initialPosition = [
-  [10, 10],
-  [12, 10],
-];
-
-const getRandomCoordinates = () => {
-  const x = Math.floor(Math.random() * (100 / 2)) * 2;
-  const y = Math.floor(Math.random() * (100 / 2)) * 2;
-  return { top: y, left: x };
-};
+import {
+  initialPosition,
+  getRandomCoordinates,
+} from "./components/initialValues";
+import ControlContainer from "./components/control-container/ControlContainer";
+import PlayAreaContainer from "./components/play-area/PlayAreaContainer";
 
 const App = () => {
   const [gameStatus, setGameStatus] = useState(false);
