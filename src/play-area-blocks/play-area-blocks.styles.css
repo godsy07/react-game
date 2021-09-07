@@ -3,8 +3,9 @@
 }
 .play-area-block {
   position: absolute;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: rgb(218, 69, 180);
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 255, 255);
 
   height: 2%;
   width: 2%;
