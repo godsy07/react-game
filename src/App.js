@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
+
 import "./App.css";
-import {
-  initialPosition,
-  getRandomCoordinates,
-} from "./components/initialValues";
+
+// Components
 import ControlContainer from "./components/control-container/ControlContainer";
 import PlayAreaContainer from "./components/play-area/PlayAreaContainer";
+
+const initialPosition = [
+  [10, 10],
+  [12, 10],
+];
+
+const getRandomCoordinates = () => {
+  const x = Math.floor(Math.random() * (100 / 2)) * 2;
+  const y = Math.floor(Math.random() * (100 / 2)) * 2;
+  return { top: y, left: x };
+};
 
 const App = () => {
   const [gameStatus, setGameStatus] = useState(false);
@@ -81,17 +91,22 @@ const App = () => {
     }
   };
 
-  const checkOutOfBoundary = (a, b) => {
-    if (a >= 100 || b >= 100 || a < 0 || b < 0) {
+  const checkOutOfBoundary = (newHead) => {
+    if (
+      newHead[0] >= 100 ||
+      newHead[1] >= 100 ||
+      newHead[0] < 0 ||
+      newHead[1] < 0
+    ) {
       setCollapseStatus(true);
       setGameStatus(false);
       return true;
     }
   };
 
-  const checkCollapsed = () => {
+  const checkCollapsed = (newHead) => {
     // console.log("bitten itself");
-    let dots = [...snakeDots];
+    let dots = [...snakeDots, newHead];
     let head = dots[dots.length - 1];
     dots.pop();
 
@@ -102,7 +117,6 @@ const App = () => {
         return true;
       }
     }
-    return false;
   };
 
   const checkEat = () => {
@@ -134,19 +148,15 @@ const App = () => {
     let head = dots[dots.length - 1];
     switch (snakeDirection) {
       case "left":
-        if (checkOutOfBoundary(head[0] - 2, head[1])) return;
         head = [head[0] - 2, head[1]];
         break;
       case "right":
-        if (checkOutOfBoundary(head[0] + 2, head[1])) return;
         head = [head[0] + 2, head[1]];
         break;
       case "up":
-        if (checkOutOfBoundary(head[0], head[1] - 2)) return;
         head = [head[0], head[1] - 2];
         break;
       case "down":
-        if (checkOutOfBoundary(head[0], head[1] + 2)) return;
         head = [head[0], head[1] + 2];
         break;
       default:
@@ -154,10 +164,17 @@ const App = () => {
         break;
     }
 
+    // Check for CollapseStatus STARTS
+    if (checkCollapsed(head)) return; // For biting itself
+    if (checkOutOfBoundary(head)) return; // For hitting the boundary
+    // Check for CollapseStatus STARTS
+
+    // Increasing length of snake if food was eaten in last move STARTS
     if (lastLocation !== null) {
       dots.unshift(lastLocation);
       setLastLocation(null);
     }
+    // Increasing length of snake if food was eaten in last move ENDS
     checkEat();
     dots.push(head); // Adds new element at array end in snakeDots
     dots.shift(); // Removes first element in array snakeDots
@@ -173,11 +190,6 @@ const App = () => {
     if (gameStatus === true) {
       document.onkeydown = keyPressEvent;
       const run = setInterval(() => {
-        let check = null;
-        if ((check = checkCollapsed())) {
-          console.log(check);
-          return clearInterval(run);
-        }
         moveSnake();
       }, snakeSpeed);
       return () => clearInterval(run);
