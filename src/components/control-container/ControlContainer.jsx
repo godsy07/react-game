@@ -76,6 +76,20 @@ const ControlContainer = ({
           RESET
         </button>
       </div>
+      <div className='to-github-page'>
+        <p>To check the source code click on the link below:</p>
+        <div className='github-link'>
+          <div className='click-here left-pointer'>&#9758;</div>
+          <a
+            href='https://github.com/godsy07/react-game'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Click Here
+          </a>
+          <div className='click-here right-pointer'>&#9756;</div>
+        </div>
+      </div>
     </div>
   );
 };

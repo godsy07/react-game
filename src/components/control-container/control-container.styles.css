@@ -18,7 +18,7 @@
   border: 1px solid black;
   box-shadow: 2px 2px 2px black;
   background-color: rgb(184, 159, 159);
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   box-sizing: border-box;
 }
 .score-text {
@@ -123,3 +123,65 @@
   transform: scale(120%);
   cursor: pointer;
 }
+
+.to-github-page {
+  background-color: rgb(168, 243, 70);
+  min-height: 50px;
+  width: 250px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 500;
+  font-style: italic;
+}
+.to-github-page p {
+  padding: 0;
+  margin: 0;
+}
+
+.github-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.github-link a {
+  color: blue;
+}
+
+.click-here {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 150px;
+  position: absolute;
+}
+.left-pointer {
+  left: 50px;
+  /* animation: point-left 0.5s ease-in infinite forwards; */
+}
+.right-pointer {
+  right: 55px;
+  /* animation: point-right 0.5s infinite forwards; */
+}
+
+/* @keyframes point-left {
+  0% {
+    left: 25px;
+  }
+  100% {
+    left: 50px;
+  }
+}
+@keyframes point-right {
+  0% {
+    right: 30px;
+  }
+  100% {
+    right: 60px;
+  }
+} */

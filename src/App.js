@@ -7,8 +7,8 @@ import ControlContainer from "./components/control-container/ControlContainer";
 import PlayAreaContainer from "./components/play-area/PlayAreaContainer";
 
 const initialPosition = [
-  [10, 10],
-  [12, 10],
+  [10, 30],
+  [12, 30],
 ];
 
 const getRandomCoordinates = () => {
@@ -21,14 +21,12 @@ const App = () => {
   const [gameStatus, setGameStatus] = useState(false);
   const [collapseStatus, setCollapseStatus] = useState(false);
   const [snakeDirection, setSnakeDirection] = useState("right");
-  const [snakeSpeed, setSnakeSpeed] = useState(200);
+  const [snakeSpeed, setSnakeSpeed] = useState(350);
   const [score, setScore] = useState(0);
   const [food, setFood] = useState(getRandomCoordinates);
   const [lastLocation, setLastLocation] = useState(null);
   const [snakeDots, setSnakeDots] = useState(initialPosition); // position of snake in absolute in percentage (%)
   const playAreaWidth = 512; // for setting up height and width of PlayAreaContainer dynamically
-  // const blockWidth = 8; // for initial width of block (must be a factor of playAreaWidth value)
-  // const [blockPosition, setBlockPosition] = useState([80, 160]); // position of block in absolute
 
   const handleClick = (direction) => {
     if (direction === "start") {
